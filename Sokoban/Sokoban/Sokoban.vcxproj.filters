@@ -15,8 +15,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ventanas.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Tablero.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Niveles.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="MVector.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuInicial.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="ListasEnlazadas.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Cajas.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
     <ClCompile Include="Sokoban.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de recursos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

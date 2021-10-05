@@ -142,7 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cajas.cpp" />
+    <ClCompile Include="ListasEnlazadas.cpp" />
+    <ClCompile Include="MenuInicial.cpp" />
+    <ClCompile Include="MVector.cpp" />
+    <ClCompile Include="Niveles.cpp" />
     <ClCompile Include="Sokoban.cpp" />
+    <ClCompile Include="Tablero.cpp" />
+    <ClCompile Include="Ventanas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cajas.h" />
