@@ -144,6 +144,15 @@
   <ItemGroup>
     <ClCompile Include="Sokoban.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cajas.h" />
+    <ClInclude Include="ListasEnlazadas.h" />
+    <ClInclude Include="MenuInicial.h" />
+    <ClInclude Include="Niveles.h" />
+    <ClInclude Include="RepetirPartida.h" />
+    <ClInclude Include="Tablero.h" />
+    <ClInclude Include="Ventanas.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
