@@ -57,6 +57,8 @@ void NivelArch::LeerNivel(string Nombre, ListaEnlazada Lista, Nodo*& Actual) {
 
 void NivelArch::EscribirArchivo(Nodo*& Inicio) {
 	ofstream Archivo;
+	Archivo.open(DIRECCION_PARTIDA_GUARDADA, std::ofstream::out | std::ofstream::trunc);
+	Archivo.close();
 	Nodo* Temporal = nullptr;
 	Temporal = Inicio;
 	if (!AreaJuegoG.empty()) {
