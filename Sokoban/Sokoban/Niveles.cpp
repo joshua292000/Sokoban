@@ -28,6 +28,10 @@ string NivelArch::NivelSeleccionado(int Numero) {
 	else if (NumNivel == 5) {
 		NombreNivel = DIRECCION_NIVEL5;
 	}
+	else if (NumNivel == 6) {
+		NombreNivel = DIRECCION_PARTIDA_GUARDADA;
+
+	}
 	return NombreNivel;
 }
 
@@ -51,11 +55,24 @@ void NivelArch::LeerNivel(string Nombre, ListaEnlazada Lista, Nodo*& Actual) {
 	}
 }
 
-void NivelArch::EscribirArchivo(string Partida) {
+void NivelArch::EscribirArchivo(Nodo*& Inicio) {
 	ofstream Archivo;
+	Nodo* Temporal = nullptr;
+	Temporal = Inicio;
+	if (!AreaJuegoG.empty()) {
+		AreaJuegoG.clear();
+	}
+	Matriz2 = Listita2.LeerMatriz(Temporal);
+	cout << endl;
+	for (unsigned int i = 0; i < Matriz2.length(); i++) {
+		Caracter2 = Matriz2[i];
+		AreaJuegoG.push_back(Matriz2[i]);
+	}
 	Archivo.open(DIRECCION_PARTIDA_GUARDADA, ios::app);
 	if (Archivo.is_open()) {
-		Archivo << Partida;
+		for (unsigned int j = 0; j < Matriz2.length(); j++) {
+			Archivo << AreaJuegoG[j];
+		}
 		cout << "Partida guardada exitosamente" << endl;
 		Archivo.close();
 	}

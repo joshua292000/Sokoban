@@ -135,6 +135,12 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				}
 				break;
 
+			case sf::Keyboard::G:
+				if (Jugando == true) {
+					nivel.EscribirArchivo(Inicio);
+				}
+				break;
+
 			case sf::Keyboard::Return:
 
 				switch (menu.ObtenerItem())
@@ -166,7 +172,23 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 					}
 					break;
 				case 1:
-					cout << "\n falta! \n";
+					if (IniciarJuego == false) {
+						cout << "\nPrimero debe guardar una partida\n";
+
+						
+					}
+					else {
+						if (IniciarJuego == true && NivelSeleccionado != 6) {
+							cout << "\nSe abrió la partida guardada\n";
+							NivelSeleccionado = 6;
+							InicializarJuego(NivelSeleccionado);
+							Jugando = true;
+							MenuActivo = false;
+							tablero.PausarMusica();
+							tablero.ReproducirMusica(3);
+
+						}
+					}
 					break;
 
 
