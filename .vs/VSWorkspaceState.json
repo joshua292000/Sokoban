@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Sokoban"
   ],
-  "SelectedNode": "\\Sokoban.sln",
+  "SelectedNode": "\\Sokoban\\Sokoban.sln",
   "PreviewInSolutionExplorer": false
 }
