@@ -7,7 +7,7 @@
 #define DIRECCION_NIVEL3 "../Niveles/nivel3.txt"
 #define DIRECCION_NIVEL4 "../Niveles/nivel4.txt"
 #define DIRECCION_NIVEL5 "../Niveles/nivel5.txt"
-#define DIRECCION_PARTIDA_GUARDADA "../Niveles/partidaAnterior.txt"
+#define DIRECCION_PARTIDA_GUARDADA "../Niveles/partidaGuardada.txt"
 
 using namespace std;
 
@@ -15,6 +15,14 @@ struct NivelArch {
 	NivelArch();
 	string NivelSeleccionado(int);
 	void LeerNivel(string Nombre, ListaEnlazada Lista, Nodo*& Actual);
-	void EscribirArchivo(string dato);
+	void EscribirArchivo(Nodo*& Inicio);
+
+	vector<char>AreaJuegoG;
+	string Matriz2;
+	ListaEnlazada Listita2;
+	char Caracter2;
+
+
+
 };
 

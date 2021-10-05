@@ -1,10 +1,6 @@
-﻿  Cajas.cpp
-  ListasEnlazadas.cpp
-C:\Users\JOSS\Documents\GitHub\Sokoban\Sokoban\Sokoban\ListasEnlazadas.cpp(108,32): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  MenuInicial.cpp
-  MVector.cpp
+﻿  MenuInicial.cpp
   Niveles.cpp
-C:\Users\JOSS\Documents\GitHub\Sokoban\Sokoban\Sokoban\Niveles.cpp(42,35): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\JOSS\Documents\GitHub\Sokoban\Sokoban\Sokoban\Niveles.cpp(46,35): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
   Sokoban.cpp
   Tablero.cpp
   Ventanas.cpp
