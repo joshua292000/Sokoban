@@ -50,6 +50,7 @@ public:
 	std::vector<char> AreaJuego;
 
 	string LeerMatriz(Nodo*&);
+	
 
 	int ColumnaMapa;
 	int FilaMapa;

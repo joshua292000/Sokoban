@@ -46,6 +46,7 @@ private:
 	void Teclado(sf::RenderWindow& window, Nodo*& n);
 	int NivelSeleccionado = 1;
 	void MedidasPantalla(sf::RenderWindow& window);
+	void SiguienteNivel(int Nivel, bool sig);
 
 };
 #endif

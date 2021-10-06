@@ -17,6 +17,11 @@ void Tablero::DibujarCambios(RenderWindow& window, Nodo*& Inicio) {
 	DibujarMapa(window);
 }
 
+bool Ganar(vector<char> m, char busqueda) {
+	return find(m.begin(), m.end(), busqueda) != m.end();
+
+}
+
 void Tablero::ActualizarMatriz(Nodo*& Inicio) {
 	Nodo* Temporal = nullptr;
 	Temporal = Inicio;
@@ -31,6 +36,13 @@ void Tablero::ActualizarMatriz(Nodo*& Inicio) {
 	}
 	for (unsigned int j = 0; j < Matriz.length(); j++) {
 		cout << AreaJuego[j];
+		
+	}
+	if (Ganar(AreaJuego, '.')) {
+		cout << "\nAun no ha ganado\n";
+	}
+	else {
+		cout << "\nSi gano\n";
 	}
 	cout << endl;
 	cout << endl;
