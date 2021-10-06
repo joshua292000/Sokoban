@@ -1,13 +1,13 @@
 ﻿  Ventanas.cpp
-C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(16,54): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(20,54): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(16,34): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(20,34): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
           with
           [
               T=unsigned int
           ]
-C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(27,13): warning C4244: 'inicializando': conversión de 'time_t' a 'int'; posible pérdida de datos
+C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\Sokoban\Ventanas.cpp(31,13): warning C4244: 'inicializando': conversión de 'time_t' a 'int'; posible pérdida de datos
   Sokoban.vcxproj -> C:\Users\Kevin\Documents\GitHub\Sokoban\Sokoban\x64\Debug\Sokoban.exe

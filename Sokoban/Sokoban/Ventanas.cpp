@@ -1,6 +1,10 @@
 #include "Ventanas.h"
 #include<vector>
 #include<ctime>
+#include <iostream>
+#include <windows.h>
+#define windows_h
+
 using namespace sf;
 
 Tablero tablero;
@@ -152,7 +156,12 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				}
 				break;
 			case sf::Keyboard::R:
-				InicializarJuego(NivelSeleccionado);
+				if (MessageBoxA(NULL, "hola mundo", "Ganastes", MB_OKCANCEL | MB_ICONEXCLAMATION) == IDOK) {
+					cout << "\n Hola mundo \n";
+				}
+
+				
+				/*InicializarJuego(NivelSeleccionado);
 				Jugando = true;
 				MenuActivo = false;
 				//MenuInicial();
@@ -192,6 +201,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 					x++;
 
 				}
+				*/
 				break;
 			case sf::Keyboard::Return:
 
