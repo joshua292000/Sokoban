@@ -1,12 +1,16 @@
 #include "Ventanas.h"
-
+#include<vector>
+#include<ctime>
 using namespace sf;
 
 Tablero tablero;
 ListaEnlazada lista;
 NivelArch nivel;
 Nodo* Inicio;
-
+Nodo* j = nullptr;
+int x = 0;
+//VectorRepetir vectorRepetir;
+vector<string> Repetir;
 sf::RenderWindow window(sf::VideoMode(1000, 600), "El mejor Sokoban");
 
 menuInicial menu(window.getSize().x, window.getSize().y);
@@ -18,6 +22,9 @@ Ventanas::Ventanas() {
 
 Ventanas::~Ventanas() {
 
+}
+void delay(int secs) {
+	for (int i = (time(NULL) + secs); time(NULL) != i; time(NULL));
 }
 
 void Ventanas::MedidasPantalla(RenderWindow& window) {
@@ -74,6 +81,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				else if (Jugando) {
 					lista.MovArriba(n); //	Mueve hacia arriba
 					Movimiento = true;
+					Repetir.push_back("Arriba");
 				}
 				break;
 
@@ -87,6 +95,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				else if (Jugando) {
 					lista.MovAbajo(n);
 					Movimiento = true;
+					Repetir.push_back("Abajo");
 				}
 				break;
 
@@ -100,6 +109,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 
 					lista.MovDerecha(n);
 					Movimiento = true;
+					Repetir.push_back("Derecha");
 				}
 				break;
 
@@ -112,6 +122,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				else if (Jugando) {
 					lista.MovIzquierda(n);
 					Movimiento = true;
+					Repetir.push_back("Izquierda");
 				}
 				break;
 
@@ -140,7 +151,48 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 					nivel.EscribirArchivo(Inicio);
 				}
 				break;
+			case sf::Keyboard::R:
+				InicializarJuego(NivelSeleccionado);
+				Jugando = true;
+				MenuActivo = false;
+				//MenuInicial();
+				j= lista.PosJugador(Inicio);
+				
+				while(x < Repetir.size()) {
+					if (Repetir[x]=="Arriba") {
+						cout << "\n pos Repetir  "<<x<<" "<< Repetir[x]<<"\n";
+						lista.MovArriba(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+						//Movimiento = false;
+						
+					}
+					if (Repetir[x]=="Abajo") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovAbajo(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+						
+					}
+					if (Repetir[x]=="Izquierda") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovIzquierda(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+						
+					}
+					if (Repetir[x]=="Derecha") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovDerecha(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+						
+					}
+					delay(1);
+					x++;
 
+				}
+				break;
 			case sf::Keyboard::Return:
 
 				switch (menu.ObtenerItem())
@@ -322,8 +374,9 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 					tablero.PausarMusica();
 					break;
 				}
-
+				//break;
 			}
+			
 		}
 
 	}
