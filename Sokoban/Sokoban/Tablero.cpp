@@ -1,5 +1,6 @@
 #include "Tablero.h"
-
+#include <windows.h>
+#define windows_h
 using namespace sf;
 
 Tablero::Tablero() {
@@ -42,7 +43,7 @@ void Tablero::ActualizarMatriz(Nodo*& Inicio) {
 		cout << "\nAun no ha ganado\n";
 	}
 	else {
-		cout << "\nSi gano\n";
+		MessageBoxA(NULL, "Digite S para pasar al siguiente nivel o R para ver la repetición", "Nivel Completado", MB_OK | MB_ICONEXCLAMATION);
 	}
 	cout << endl;
 	cout << endl;

@@ -46,13 +46,9 @@ void ListaEnlazada::Insertar(Nodo*& Inicio, char caracter, int Linea) {
 					Temporal1 = Temporal1->Derecha;
 					Temporal2 = Temporal2->Derecha;
 				}
-				//cout << "tmp2 derecha: " << Temporal2->Derecha << endl;
 				Temporal2 = Temporal2->Derecha;
-
 				Temporal1->Derecha = Nuevo;
 				Nuevo->Arriba = Temporal2;
-				// << "nuevo: " << Nuevo << endl;
-				//cout << "tmp2: " << Temporal2 << endl;
 				Temporal2->Abajo = Nuevo;
 				Nuevo->Izquierda = Temporal1;
 			}
@@ -103,13 +99,13 @@ void ListaEnlazada::VerificarNivel(int Nivel) {
 	}
 }
 
-void ListaEnlazada::CargarTexturasNivel(std::string Matriz, int Nivel) {
+void ListaEnlazada::CargarTexturasNivel(string Matriz, int Nivel) {
 	char Caracter = ' ';
 	int Contador = Matriz.length();
 	VerificarNivel(Nivel);
 	for (int i = 0; i < Contador; i++) {
 		AreaJuego.push_back(Matriz[i]);
-		std::cout << AreaJuego[i];
+		cout << AreaJuego[i];
 	}
 
 }
@@ -117,14 +113,14 @@ void ListaEnlazada::CargarTexturasNivel(std::string Matriz, int Nivel) {
 void ListaEnlazada::MostrarLista(Nodo*& n) {
 	Nodo* Aux = n;
 	if (ListaVacia(Aux)) {
-		std::cout << std::endl << std::endl << "La lista no tiene elementos" << std::endl;
+		cout << endl << endl << "La lista no tiene elementos" << endl;
 	}
 	else {
 		int p = 1;
 		Nodo* Temporal;
 		Temporal = n;
 		while (Temporal != nullptr) {
-			std::cout << "Elemento # " << p++ << " " << Temporal->Caracter << std::endl;
+			cout << "Elemento # " << p++ << " " << Temporal->Caracter << endl;
 			Temporal = Temporal->Siguiente;
 		}
 	}

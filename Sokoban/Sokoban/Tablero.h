@@ -13,9 +13,9 @@
 #define DIRECCION_CAJA "../Recursos/icon.png"
 #define DIRECCION_CAMPOCAJA "../Recursos/campitovacio.png"
 #define DIRECCION_CAJAPUESTA "../Recursos/cajas.png"
-#define DIRECCION_SONIDO_PAUSA "../Recursos/Endofline.wav"
-#define DIRECCION_MUSICA_TECLAS "../Recursos/confirm.wav"
-#define DIRECCION_MUSICA_FONDO "../Recursos/Endofline.wav"
+#define DIRECCION_SONIDO_PAUSA "../Recursos/Fondo.wav"
+#define DIRECCION_MUSICA_TECLAS "../Recursos/Salto.wav"
+#define DIRECCION_MUSICA_FONDO "../Recursos/Fondo.wav"
 
 using namespace sf;
 
@@ -53,12 +53,6 @@ private:
 	void EliminarContVector();
 
 	string Matriz;
-	string DirPared;
-	string DirCaja;
-	string DirCampoCaja;
-	string DirCajapuesta;
-	string DirPersonaje;
-	string DirCamino;
 	char Caracter;
 	unsigned int Posx;
 	unsigned int Posy;

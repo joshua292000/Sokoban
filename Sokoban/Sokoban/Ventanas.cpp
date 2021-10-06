@@ -1,4 +1,9 @@
 #include "Ventanas.h"
+#include <iostream>
+#include <windows.h>
+#include<vector>
+#include<ctime>
+#define windows_h
 
 using namespace sf;
 
@@ -6,6 +11,9 @@ Tablero tablero;
 ListaEnlazada lista;
 NivelArch nivel;
 Nodo* Inicio;
+Nodo* j = nullptr;
+int x = 0;
+vector<string> Repetir;
 
 sf::RenderWindow window(sf::VideoMode(1000, 600), "El mejor Sokoban");
 
@@ -18,6 +26,10 @@ Ventanas::Ventanas() {
 
 Ventanas::~Ventanas() {
 
+}
+
+void delay(int secs) {
+	for (int i = (time(NULL) + secs); time(NULL) != i; time(NULL));
 }
 
 void Ventanas::MedidasPantalla(RenderWindow& window) {
@@ -55,15 +67,15 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 	{
 		switch (event.type)
 		{
-		case sf::Event::Closed:
+		case Event::Closed:
 			window.close();
 			tablero.PausarMusica();
 			break;
 
-		case sf::Event::KeyReleased:
+		case Event::KeyReleased:
 			switch (event.key.code)
 			{
-			case sf::Keyboard::Up:
+			case Keyboard::Up:
 				system("cls");
 				cout << "Arriba\n";
 
@@ -72,12 +84,13 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 					tablero.ReproducirMusica(2);
 				}
 				else if (Jugando) {
-					lista.MovArriba(n); //	Mueve hacia arriba
+					lista.MovArriba(n); 
 					Movimiento = true;
+					Repetir.push_back("Arriba");
 				}
 				break;
 
-			case sf::Keyboard::Down:
+			case Keyboard::Down:
 				system("cls");
 				cout << "Abajo\n";
 				if (MenuActivo) {
@@ -87,35 +100,38 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				else if (Jugando) {
 					lista.MovAbajo(n);
 					Movimiento = true;
+					Repetir.push_back("Abajo");
 				}
 				break;
 
-			case sf::Keyboard::Right:
+			case Keyboard::Right:
 				system("cls");
 				cout << "Derecha\n";
 				if (MenuActivo) {
-					//	Menu no tiene movimiento a la derecha
+					
 				}
 				else if (Jugando) {
 
 					lista.MovDerecha(n);
 					Movimiento = true;
+					Repetir.push_back("Derecha");
 				}
 				break;
 
-			case sf::Keyboard::Left:
+			case Keyboard::Left:
 				system("cls");
 				cout << "Izquierda\n";
 				if (MenuActivo) {
-					// Menu no tiene movimiento a la izquierda
+					
 				}
 				else if (Jugando) {
 					lista.MovIzquierda(n);
 					Movimiento = true;
+					Repetir.push_back("Izquierda");
 				}
 				break;
 
-			case sf::Keyboard::Escape:
+			case Keyboard::Escape:
 				if (IniciarJuego != false) {
 					if (Jugando == true) {
 						tablero.PausarMusica();
@@ -135,34 +151,78 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				}
 				break;
 
-			case sf::Keyboard::G:
+			case Keyboard::G:
 				if (Jugando == true) {
 					nivel.EscribirArchivo(Inicio);
 				}
 				break;
 
-			case sf::Keyboard::S:
+			case Keyboard::R:
+				InicializarJuego(NivelSeleccionado);
+				Jugando = true;
+				MenuActivo = false;
+				j = lista.PosJugador(Inicio);
+
+				while (x < Repetir.size()) {
+					if (Repetir[x] == "Arriba") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovArriba(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+
+					}
+					if (Repetir[x] == "Abajo") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovAbajo(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+
+					}
+					if (Repetir[x] == "Izquierda") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovIzquierda(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+
+					}
+					if (Repetir[x] == "Derecha") {
+						cout << "\n pos Repetir  " << x << " " << Repetir[x] << "\n";
+						lista.MovDerecha(j);
+						j = lista.PosJugador(Inicio);
+						tablero.DibujarCambios(window, Inicio);
+
+					}
+					delay(1);
+					x++;
+
+				}
+				break;
+
+			case Keyboard::S:
 				if (NivelSeleccionado == 1) {
+					Repetir.clear();
 					InicializarJuego(2);
 				}
 				else if (NivelSeleccionado == 2) {
+					Repetir.clear();
 					InicializarJuego(3);
 				}
 				else if (NivelSeleccionado == 3) {
+					Repetir.clear();
 					InicializarJuego(4);
 				}
 				else if (NivelSeleccionado == 4) {
+					Repetir.clear();
 					InicializarJuego(5);
 				}
 				else if (NivelSeleccionado == 5) {
-					cout << "Ganó";
-					
-					
+					Repetir.clear();
+					MessageBoxA(NULL, "Niveles completados", "Ganastes", MB_OK | MB_ICONEXCLAMATION);
 				}
 
 			break;
 
-			case sf::Keyboard::Return:
+			case Keyboard::Return:
 
 				switch (menu.ObtenerItem())
 				{
@@ -175,6 +235,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 						Jugando = true;
 						IniciarJuego = true;
 						MenuActivo = false;
+						MessageBoxA(NULL, "Para guardar digite G y esc para pausar y salir al menú principal", "Opciones", MB_OK | MB_ICONEXCLAMATION);
 					}
 					else {
 						if (IniciarJuego == true && NivelSeleccionado == 1) {
@@ -237,7 +298,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 						Jugando = true;
 						IniciarJuego = true;
 						MenuActivo = false;
-
+						MessageBoxA(NULL, "Para guardar digite G y esc para pausar y salir al menú principal", "Opciones", MB_OK | MB_ICONEXCLAMATION);
 					}
 					else {
 						if (IniciarJuego == true && NivelSeleccionado == 2) {
@@ -264,6 +325,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 						Jugando = true;
 						IniciarJuego = true;
 						MenuActivo = false;
+						MessageBoxA(NULL, "Para guardar digite G y esc para pausar y salir al menú principal", "Opciones", MB_OK | MB_ICONEXCLAMATION);
 					}
 					else {
 						if (IniciarJuego == true && NivelSeleccionado == 3) {
@@ -291,6 +353,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 						Jugando = true;
 						IniciarJuego = true;
 						MenuActivo = false;
+						MessageBoxA(NULL, "Para guardar digite G y esc para pausar y salir al menú principal", "Opciones", MB_OK | MB_ICONEXCLAMATION);
 					}
 					else {
 						if (IniciarJuego == true && NivelSeleccionado == 4) {
@@ -318,6 +381,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 						Jugando = true;
 						IniciarJuego = true;
 						MenuActivo = false;
+						MessageBoxA(NULL, "Para guardar digite G y esc para pausar y salir al menú principal", "Opciones", MB_OK | MB_ICONEXCLAMATION);
 					}
 					else {
 						if (IniciarJuego == true && NivelSeleccionado == 5) {
@@ -338,7 +402,7 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 
 
 				case 7:
-					std::cout << "Boton de cerrar ventaja de juego!" << std::endl;
+					cout << "Boton de cerrar ventana de juego!" <<endl;
 					window.close();
 					tablero.PausarMusica();
 					break;
@@ -380,10 +444,5 @@ void Ventanas::InicializarJuego(int Nivel) {
 	nivel.LeerNivel(nivel.NivelSeleccionado(Nivel), lista, Inicio);
 	tablero.ActualizarMatriz(Inicio);
 	tablero.CargarTexturas();
-	//nivel.EscribirArchivo();
-}
-
-
-void Ventanas::SiguienteNivel(int Nivel,bool sig) {
 	
 }

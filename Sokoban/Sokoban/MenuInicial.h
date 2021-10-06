@@ -5,6 +5,8 @@
 #define MAXIMO_OPCIONES 8
 #define DIR_FUENTES "../Fuentes/OriginTech personal use.ttf"
 
+
+
 class menuInicial
 {
 public:
@@ -27,5 +29,4 @@ private:
 	void CargarFuentes();
 
 };
-
 #endif

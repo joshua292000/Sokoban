@@ -14,6 +14,8 @@ using std::string;
 #define NIVEL4 30;
 #define NIVEL5 30;
 
+
+
 struct Nodo {
 	char Caracter;
 	char Aux;

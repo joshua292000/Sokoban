@@ -145,7 +145,6 @@
     <ClCompile Include="Cajas.cpp" />
     <ClCompile Include="ListasEnlazadas.cpp" />
     <ClCompile Include="MenuInicial.cpp" />
-    <ClCompile Include="MVector.cpp" />
     <ClCompile Include="Niveles.cpp" />
     <ClCompile Include="Sokoban.cpp" />
     <ClCompile Include="Tablero.cpp" />
@@ -156,7 +155,6 @@
     <ClInclude Include="ListasEnlazadas.h" />
     <ClInclude Include="MenuInicial.h" />
     <ClInclude Include="Niveles.h" />
-    <ClInclude Include="RepetirPartida.h" />
     <ClInclude Include="Tablero.h" />
     <ClInclude Include="Ventanas.h" />
   </ItemGroup>
