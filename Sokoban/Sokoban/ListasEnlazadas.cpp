@@ -433,7 +433,7 @@ void ListaEnlazada::MovIzquierda(Nodo*& Personaje) {
 				if (Personaje->Aux == '.') {
 					Personaje->Caracter = Personaje->Aux;
 				}
-				else {
+				else {	
 					Personaje->Caracter = ' ';
 				}
 			}
@@ -458,3 +458,6 @@ std::string ListaEnlazada::LeerMatriz(Nodo*& Inicio) {
 	}
 	return Matriz;
 }
+
+
+

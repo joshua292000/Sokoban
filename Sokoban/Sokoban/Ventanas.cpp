@@ -141,6 +141,27 @@ void Ventanas::Teclado(RenderWindow& window, Nodo*& n) {
 				}
 				break;
 
+			case sf::Keyboard::S:
+				if (NivelSeleccionado == 1) {
+					InicializarJuego(2);
+				}
+				else if (NivelSeleccionado == 2) {
+					InicializarJuego(3);
+				}
+				else if (NivelSeleccionado == 3) {
+					InicializarJuego(4);
+				}
+				else if (NivelSeleccionado == 4) {
+					InicializarJuego(5);
+				}
+				else if (NivelSeleccionado == 5) {
+					cout << "Ganó";
+					
+					
+				}
+
+			break;
+
 			case sf::Keyboard::Return:
 
 				switch (menu.ObtenerItem())
@@ -351,7 +372,6 @@ void Ventanas::MnejoEventosTeclado(RenderWindow& window) {
 }
 
 void Ventanas::InicializarJuego(int Nivel) {
-	int i = 6;
 	window.clear();
 	tablero.PausarMusica();
 	tablero.ReproducirMusica(3);
@@ -361,4 +381,9 @@ void Ventanas::InicializarJuego(int Nivel) {
 	tablero.ActualizarMatriz(Inicio);
 	tablero.CargarTexturas();
 	//nivel.EscribirArchivo();
+}
+
+
+void Ventanas::SiguienteNivel(int Nivel,bool sig) {
+	
 }
